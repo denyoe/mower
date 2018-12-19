@@ -1,5 +1,5 @@
 /**
- * 
+ * Lawn Grid
  * @classdesc Grid
  */
 export default class Grid {

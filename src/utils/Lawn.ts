@@ -16,23 +16,32 @@ export default class Lawn {
 	 * @constructor Init Class Params
 	 * @param grid [Grid]
 	 */
-	constructor(path: string = 'mower.txt') {
+	constructor() {
 		this.grid = new Grid(0, 0)
-
-		this.init(path)
 	}
 
 	get mowers(): Mower[] {
 		return this._mowers;
 	}
 
-	private _addMower(mower: Mower) {
-		this._mowers.push(mower)
+	/**
+	 * Adds Mowers to the Grid
+	 * @param mower [Mower]
+	 * TODO: Deal with collision
+	 */
+	public addMower(mower: Mower) {
+		if (mower.position.x <= this.grid.width && mower.position.y <= this.grid.height) {			
+			this._mowers.push(mower)
+		} else {
+			// console.error('Skipping mower...', mower.position)
+		}
 	}
 
+	/**
+	 * 
+	 * @param path Path to Mower Commands File
+	 */
 	init(path: string) {
-		// const stream = fs.createReadStream(path, 'utf8')
-
 		let commands: any
 		try {
 			commands = fs.readFileSync(path, 'utf8').split('\n')
@@ -40,7 +49,7 @@ export default class Lawn {
 			throw "File Not Found: " + path;
 		}		
 
-		let lawn_grid: number[] = commands[0].split(' ').map((el) => {
+		let lawn_grid: number[] = commands[0].split(' ').map((el: string) => {
 			return parseInt(el)
 		})
 
@@ -53,39 +62,15 @@ export default class Lawn {
 			let instructions = commands[i+1].split('') // next line [instructions]
 			let mower: Mower = new Mower({ x: parseInt(inital_pos[0]), y: parseInt(inital_pos[1]) }, inital_pos[2])
 			mower.instructions = instructions
-			console.log(inital_pos, instructions)
-			this._addMower(mower)
+			this.addMower(mower)
 		}
-		// this.mow()
 
-		// console.log(this.mowers)
-
-		// let Lines: string[] = []
-			
-		// stream
-		// 	.on('error', (e) => {
-		// 		console.log('An Error Occured: ', e)
-		// 	})
-		// 	.on('data', (chunk) => {
-		// 		Lines = chunk.split('\n')
-		// 	})
-		// 	.on('end', () => {
-		// 		console.log(Lines)
-		// 	})
-		
-		
-
-		// let mower: Mower = new Mower({ x: 3, y: 3 }, 'E');
-		// let mower: Mower = new Mower({ x: 1, y: 2 }, 'N');
-		// this._addMower(new Mower({ x: 1, y: 2 }, 'N'))
-		// this._addMower(new Mower({ x: 3, y: 3 }, 'E'))
+		return this
 	}
 
 	mow(): Lawn {
 		
 		this.mowers.map((mower) => {
-			// let moves: string[] = 'LFLFLFLFF'.split('')
-			// let moves: string[] = 'FFRFFRFRRF'.split('')
 			let moves: string[] = mower.instructions
 			for (let i = 0; i < moves.length; i++) {
 				switch (moves[i]) {
@@ -101,7 +86,7 @@ export default class Lawn {
 				}
 			}
 
-			console.log(mower.position, mower.orientation)
+			console.log(mower.position.x, mower.position.y, mower.orientation)
 		})
 
 		return this

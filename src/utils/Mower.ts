@@ -40,7 +40,6 @@ export default class Mower {
 	constructor(position: { x: number, y: number }, orientation: string) {
 		this._position = position
 		this._orientation = orientation
-		// R - L - F
 	}
 
 	
@@ -65,7 +64,7 @@ export default class Mower {
 	}
 
 	turn(direction: string): void {
-		this._orientation = Mower.Direction[direction][this._orientation]
+		return this._orientation = Mower.Direction[direction][this._orientation]
 	}
 
 	advance(grid: Grid): void {
