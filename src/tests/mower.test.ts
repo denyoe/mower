@@ -6,13 +6,13 @@ describe('Lawn Mower Movements', () => {
         it('should correctly get "Left" direction when turning from "North" orientation', () => {
             let mower: Mower = new Mower({ x: 1, y: 3 }, 'N')
 
-            expect(mower.turn('L')).toStrictEqual('E')
+            expect(mower.turn('L')).toStrictEqual('W')
         })
 
         it('should correctly get "Righ" direction when turning from "East" orientation', () => {
             let mower: Mower = new Mower({ x: 1, y: 3 }, 'E')
 
-            expect(mower.turn('R')).toStrictEqual('N')
+            expect(mower.turn('R')).toStrictEqual('S')
         })
     })
 
@@ -28,7 +28,7 @@ describe('Lawn Mower Movements', () => {
             expect(mower.position.y).toStrictEqual(3)
 
             // change orientation
-            mower.turn('L')
+            mower.turn('R')
             expect(mower.orientation).toStrictEqual('E')
             // try to advance East
             mower.advance(grid)

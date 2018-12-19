@@ -13,17 +13,17 @@ export default class Mower {
 	private _instructions: string[] = []
 	/** 
 	 * Mower Orientations Mapping
-	 * i.e. Right of North => Mower.Direction['R']['N'] === W
+	 * i.e. Right of North => Mower.Direction['R']['N'] === E
 	 * @refer to README.md
 	*/
 	static Direction: any = {
-		'R': {
+		'L': {
 			'N': 'W',
 			'W': 'S',
 			'S': 'E',
 			'E': 'N'
 		},
-		'L': {
+		'R': {
 			'N': 'E',
 			'E': 'S',
 			'S': 'W',

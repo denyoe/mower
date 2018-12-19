@@ -25,10 +25,10 @@ The cell directly at North of the position (x, y) has for coordinates (x, y+1).
 
 An input file following these rules is given to program the mower:
 
-● The first line is the coordinates of the upper-right corner of the lawn, coordinates of lower-left corner are supposed to be (0,0)
-● Next lines of the file drive all mowers. There are two lines for each mower:
-	● First line give the initial position and orientation of the mower. Position and orientation are given by 2 numbers and a letter, separated by a space
-	● Second line is a sequence of instructions driving the mower across the lawn. Instructions are a sequence of letters without space.
+* The first line is the coordinates of the upper-right corner of the lawn, coordinates of lower-left corner are supposed to be (0,0)
+* Next lines of the file drive all mowers. There are two lines for each mower:
+    * First line give the initial position and orientation of the mower. Position and orientation are given by 2 numbers and a letter, separated by a space
+    * Second line is a sequence of instructions driving the mower across the lawn. Instructions are a sequence of letters without space.
 
 Each mower moves sequentially, it means that the second mower moves only after the first one execute all its instructions.
 
@@ -53,6 +53,3 @@ This output is expected (final positions of mowers):
 1 3 N
 5 1 E
 ```
-
-<!-- "build:live": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/*.ts" -->
-<!-- "build:live": "./node_modules/nodemon/bin/nodemon.js" -->
