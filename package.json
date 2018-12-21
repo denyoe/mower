@@ -2,7 +2,7 @@
 	"name": "contentsquare-mower",
 	"version": "1.0.0",
 	"description": "Automated Lawn Mower",
-	"author": "Marcus Ekon <marcek.ekon@gmail.com>",
+	"author": "Marcus Ekon <marcus.ekon@gmail.com>",
 	"private": true,
 	"scripts": {
 		"test": "jest",
